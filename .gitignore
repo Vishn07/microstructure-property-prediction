@@ -1,0 +1,35 @@
+# Datasets — never commit (large + not redistributable)
+*.h5
+*.hdf5
+data/
+datasets/
+Cr9*/
+*.tif
+*.tiff
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.czi
+*.dm3
+*.dm4
+
+# Trained models / serialized objects
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.onnx
+models/
+checkpoints/
+
+# Python junk
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db
