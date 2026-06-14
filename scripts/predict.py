@@ -108,7 +108,6 @@ def predict(image_path):
     print(features)
 
     # load and process image
-    print(f"\nLoading image: {image_path}")
     img = load_image(image_path)
     print(f"Image loaded. Shape: {img.shape}, "
           f"value range: {img.min():.3f} to {img.max():.3f}")
@@ -119,7 +118,6 @@ def predict(image_path):
     plt.tight_layout()
     plt.savefig("C:\\Users\\vishw\\ml tut\\Project\\outputs\\input_image.png", dpi=120)
     plt.show()
-    print("Image saved to outputs/input_image.png")
     # extract features
     print("\nExtracting features...")
     feat_dict = extract_features(img)
