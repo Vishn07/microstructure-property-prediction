@@ -130,7 +130,6 @@ def eval_epoch(model, loader, criterion, device):
 #main loop
 def main():
     # 1. Load all indices and E_x values (not images — just metadata)
-    print("Reading metadata from HDF5 (fast)...")
     index_list = []   # (class_name, local_idx)
     all_ex     = []   # E_x values
  
@@ -244,7 +243,6 @@ def main():
                 break
  
     # 4. Final evaluation
-    print("\nLoading best model...")
     checkpoint = torch.load(best_model_path, map_location=DEVICE, weights_only=True)
     model.load_state_dict(checkpoint["model_state"])
  
@@ -304,7 +302,6 @@ def main():
     out_plot = os.path.join(OUTPUT_DIR, "phase5_v2_results.png")
     plt.savefig(out_plot, dpi=130)
     plt.show()
-    print(f"\nPlot saved to {out_plot}")
  
  
 if __name__ == "__main__":
