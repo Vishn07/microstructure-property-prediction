@@ -108,7 +108,6 @@ def eval_epoch(model, loader, criterion, device):
     return total_loss / len(loader.dataset), np.array(all_preds), np.array(all_targets)
 def main():
     # 1. Load data
-    print("Loading data from HDF5...")
     with h5py.File(FILE_PATH, "r") as f:
         images = f[f"{"GRF"}/{"GRF"}"][:10000]          # (N, 256, 256)
         mech   = f[f"{"GRF"}/homogenized_mechanical"][:10000]
@@ -191,7 +190,6 @@ def main():
                 break
  
     # 5. Evaluate on test set using best model
-    print("\nLoading best model for final evaluation...")
     checkpoint = torch.load(best_model_path, map_location=DEVICE, weights_only=True)
     model.load_state_dict(checkpoint["model_state"])
  
@@ -252,8 +250,6 @@ def main():
     out_plot = os.path.join(OUTPUT_DIR, "phase5_cnn_results.png")
     plt.savefig(out_plot, dpi=130)
     plt.show()
-    print(f"\nPlot saved to {out_plot}")
-    print(f"Model saved to {best_model_path}")
  
  
 if __name__ == "__main__":
