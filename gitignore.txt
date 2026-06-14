@@ -1,0 +1,27 @@
+cat > .gitignore << 'EOF'
+# Datasets
+data/
+datasets/
+*.h5
+*.hdf5
+*.zip
+
+# Models
+outputs/
+models/
+*.pkl
+*.joblib
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
