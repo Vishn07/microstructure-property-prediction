@@ -336,7 +336,6 @@ def main():
     out = os.path.join(OUTPUT_DIR, "phase6_ablation.png")
     plt.savefig(out, dpi=130)
     plt.show()
-    print(f"\nPlot saved to {out}")
  
  
 if __name__ == "__main__":
