@@ -66,9 +66,7 @@ def main():
 
         return None
 
-    print("=" * 65)
     print("EXPLICIT ROOM-TEMPERATURE MAPPING")
-    print("=" * 65)
 
     usable = []
     skipped = []
@@ -106,7 +104,6 @@ def main():
 
     print(f"\nUsable alloys (have both images and room-temp YS/UTS): {len(final)}")
     print(f"{'Alloy':<12}{'Folder':<12}{'Images':<8}{'YS':<8}{'UTS':<8}")
-    print("-" * 50)
     total_images = 0
     for u in sorted(final, key=lambda x: x["alloy"]):
         dup = " (avg of 2)" if u.get("_dup") else ""
@@ -125,8 +122,7 @@ def main():
     out = os.path.join(os.path.dirname(CSV_PATH), "phase8_alloy_mapping.csv")
     map_df.to_csv(out, index=False)
     print(f"\nMapping saved to: {out}")
-    print("Review the table above. If the YS/UTS values look right for each")
-    print("alloy, we can proceed to build the training pipeline.")
+
 
 
 if __name__ == "__main__":
