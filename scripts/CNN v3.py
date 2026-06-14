@@ -222,8 +222,7 @@ def eval_epoch(model, loader, criterion, device):
     return total_loss / len(loader.dataset), np.array(all_preds), np.array(all_targets)
 #main run
 def main():
-    print("Reading metadata and extracting hand-crafted features...")
-    print("(This takes ~20 min for 85k images — go get a coffee)\n")
+   
  
     index_list = []
     all_ex     = []
@@ -241,7 +240,7 @@ def main():
                 all_feats.append(feat)
                 index_list.append((cls, i))
             all_ex.extend(ex.tolist())
-            print(f"    done.")
+            print("done.")
  
     all_ex    = np.array(all_ex,   dtype=np.float32)
     all_feats = np.array(all_feats, dtype=np.float32)
@@ -351,7 +350,6 @@ def main():
                 break
  
     # Final evaluation
-    print("\nLoading best model for final evaluation...")
     checkpoint = torch.load(best_model_path, map_location=DEVICE, weights_only=True)
     model.load_state_dict(checkpoint["model_state"])
  
@@ -411,7 +409,6 @@ def main():
     out = os.path.join(OUTPUT_DIR, "phase6_hybrid_results.png")
     plt.savefig(out, dpi=130)
     plt.show()
-    print(f"\nPlot saved to {out}")
  
  
 if __name__ == "__main__":
