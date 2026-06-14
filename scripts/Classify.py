@@ -39,7 +39,7 @@ PATIENCE = 10
 IMG_SIZE = 224     # ResNet standard input size
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-print(f"Device: {DEVICE}")
+(f"Device: {DEVICE}")
 
 
 CLASS_MAP = {
@@ -208,7 +208,6 @@ def eval_epoch(model, loader, criterion, device):
 # Main
 def main():
     # 1. Load and prepare metadata
-    print("Loading metadata...")
     df = pd.read_excel(METADATA)
     df["class"]  = df["primary_microconstituent"].map(CLASS_MAP)
     df["mag_raw"] = df["magnification"].apply(parse_magnification)
@@ -254,7 +253,7 @@ def main():
  
     print(f"\nImages found: {len(records)}  Missing: {missing}")
     if len(records) == 0:
-        print("ERROR: No images found. Check IMAGE_DIR path.")
+        print("ERROR: No images found.")
         return
  
     # 3. Split
@@ -417,8 +416,7 @@ def main():
     out = os.path.join(OUTPUT_DIR, "phase7_results.png")
     plt.savefig(out, dpi=130)
     plt.show()
-    print(f"\nPlot saved to {out}")
-    print(f"Model saved to {best_model_path}")
+   
  
  
 if __name__ == "__main__":
