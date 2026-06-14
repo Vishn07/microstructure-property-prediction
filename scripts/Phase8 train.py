@@ -85,7 +85,6 @@ FEATURE_NAMES = [
 ]
 def main():
     # 1. Load the verified alloy mapping
-    print("Loading alloy mapping...")
     mapping = pd.read_csv(MAPPING_CSV)
     print(f"Alloys to process: {len(mapping)}")
  
@@ -131,7 +130,6 @@ def main():
     # 3. Leave-One-Alloy-Out cross validation
     # With 29 alloys, LOOCV is the most data-efficient honest evaluation.
     # Each alloy is held out once; model trains on the other 28.
-    print("\nRunning Leave-One-Alloy-Out cross validation...")
  
     def loocv(X, y, label):
         loo = LeaveOneOut()
@@ -195,7 +193,6 @@ def main():
     out = os.path.join(OUTPUT_DIR, "phase8_results.png")
     plt.savefig(out, dpi=130)
     plt.show()
-    print(f"\nPlot saved to {out}")
  
     # 6. Save predictions table
     results_df = pd.DataFrame({
@@ -207,7 +204,6 @@ def main():
     })
     results_csv = os.path.join(OUTPUT_DIR, "phase8_predictions.csv")
     results_df.to_csv(results_csv, index=False)
-    print(f"Predictions saved to {results_csv}")
     print("\n" + results_df.to_string(index=False))
  
  
