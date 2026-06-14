@@ -23,7 +23,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 print(f"Train: {len(X_train)} samples")
 print(f"Test:  {len(X_test)} samples")
-print("\nTraining Random Forest...")
 rf = RandomForestRegressor(
     n_estimators=100,   # 100 decision trees
     max_depth=None,     # trees grow until pure
@@ -68,4 +67,3 @@ axes[1].invert_yaxis()
 plt.tight_layout()
 plt.savefig(f"{OUTPUT_DIR}\\model_results.png", dpi=120)
 plt.show()
-print(f"\nPlot saved to {OUTPUT_DIR}\\model_results.png")
