@@ -15,11 +15,9 @@ DATA_ROOT = r"C:\Users\vishw\ml tut\Project\data\cr9 data"
 def explore(root):
     if not os.path.exists(root):
         print(f"ERROR: Path does not exist: {root}")
-        print("Edit DATA_ROOT at the top of this script to point at the unzipped folder.")
         return
 
     print(f"Exploring: {root}\n")
-    print("=" * 70)
 
     # Walk the directory tree
     total_files = 0
@@ -66,7 +64,6 @@ def explore(root):
     # If there's a CSV or Excel, peek at it
     for d in data_files:
         if d.endswith((".csv", ".xlsx", ".xls")):
-            print(f"\n{'='*70}")
             print(f"Peeking at: {d}")
             try:
                 import pandas as pd
