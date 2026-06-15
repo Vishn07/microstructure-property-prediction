@@ -170,7 +170,9 @@ Key scripts in order of the project arc:
 - `predict.py` — load a saved model and predict on a new image
 
 ---
+Vishwak Naramreddy (UMD Materials Science & Engineering)
 
 ## Acknowledgements
 
 Datasets: MICRO2D (Georgia Tech, Kalidindi group), UHCS (Carnegie Mellon), and the 9% Cr steel dataset (US DOE NETL, Rozman et al., Data in Brief 2022). This project was developed as an independent research effort applying machine learning to materials microstructure-property relationships.
+
