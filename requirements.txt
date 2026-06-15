@@ -1,7 +1,11 @@
 numpy
 pandas
 scikit-learn
-opencv-python
 scikit-image
-h5py
+opencv-python
 matplotlib
+h5py
+torch
+torchvision
+tqdm
+kagglehub
