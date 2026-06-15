@@ -1,11 +1,3 @@
-"""
-Phase 8 Step 1: Explore the 9Cr steel dataset structure
-========================================================
-Run this first to understand what files exist, what format the images are,
-and where the mechanical property labels live.
-
-Point DATA_ROOT at wherever you unzipped the 8.3 GB download.
-"""
 
 import os
 
