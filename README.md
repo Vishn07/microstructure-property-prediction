@@ -173,6 +173,23 @@ Key scripts in order of the project arc:
 Vishwak Naramreddy (UMD Materials Science & Engineering)
 
 ## Acknowledgements
+Robertson, A.E., Generale, A.P., Kelly, C., Buzzy, M.O., Kalidindi, S.R. MICRO2D: A Large, Statistically Diverse, Heterogeneous Microstructure Dataset . Integrating Materials and Manufacturing Innovation, (2024).
+Rozman, K.A. et al., "9% Cr steel micrograph and mechanical property dataset," Data in Brief, 2022.
+TY  - JOUR
+AU  - DeCost, Brian
+AU  - Hecht, Matthew
+AU  - Francis, Toby
+AU  - Webler, Bryan
+AU  - Picard, Yoosuf
+AU  - Holm, Elizabeth
+PY  - 2017/05/30
+SP  - 
+T1  - UHCSDB: UltraHigh Carbon Steel Micrograph DataBase: Tools for Exploring Large Heterogeneous Microstructure Datasets
+VL  - 6
+DO  - 10.1007/s40192-017-0097-0
+JO  - Integrating Materials and Manufacturing Innovation
+ER  - 
+
 
 Datasets: MICRO2D (Georgia Tech, Kalidindi group), UHCS (Carnegie Mellon), and the 9% Cr steel dataset (US DOE NETL, Rozman et al., Data in Brief 2022). This project was developed as research effort to apply machine learning to materials microstructure-property relationships.
 
