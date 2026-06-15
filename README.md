@@ -174,5 +174,5 @@ Vishwak Naramreddy (UMD Materials Science & Engineering)
 
 ## Acknowledgements
 
-Datasets: MICRO2D (Georgia Tech, Kalidindi group), UHCS (Carnegie Mellon), and the 9% Cr steel dataset (US DOE NETL, Rozman et al., Data in Brief 2022). This project was developed as an independent research effort applying machine learning to materials microstructure-property relationships.
+Datasets: MICRO2D (Georgia Tech, Kalidindi group), UHCS (Carnegie Mellon), and the 9% Cr steel dataset (US DOE NETL, Rozman et al., Data in Brief 2022). This project was developed as research effort to apply machine learning to materials microstructure-property relationships.
 
