@@ -106,8 +106,6 @@ def build_model():
  
  #Main
 def main():
-    # Load CNN
-    print("Loading CNN model...")
     checkpoint = torch.load(CNN_MODEL, map_location=DEVICE, weights_only=True)
     cnn = build_model().to(DEVICE)
     cnn.load_state_dict(checkpoint["model_state"])
@@ -148,7 +146,6 @@ def main():
             rf_rmse = np.sqrt(mean_squared_error(y_test, rf_preds))
  
             # ── CNN ──
-            print(f"  Running CNN inference...")
             cnn_preds = cnn_predict(cnn, images[test_idx], E_x_mean, E_x_std)
             cnn_r2   = r2_score(y_test, cnn_preds)
             cnn_rmse = np.sqrt(mean_squared_error(y_test, cnn_preds))
@@ -202,8 +199,7 @@ def main():
     out = os.path.join(OUTPUT_DIR, "phase6_per_class.png")
     plt.savefig(out, dpi=130)
     plt.show()
-    print(f"\nPlot saved to {out}")
-    print(f"CSV  saved to {os.path.join(OUTPUT_DIR, 'phase6_per_class.csv')}")
+  
  
  
 if __name__ == "__main__":

@@ -9,5 +9,5 @@ def print_structure(name, obj):
     print()
 
 with h5py.File(file_path, "r") as f:
-    print("=== File structure ===")
+    print("File structure")
     f.visititems(print_structure)

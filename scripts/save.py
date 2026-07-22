@@ -39,4 +39,3 @@ model_data = {
 with open(MODEL_PATH, "wb") as f:
     pickle.dump(model_data, f)
 
-print(f"Model saved to {MODEL_PATH}")
