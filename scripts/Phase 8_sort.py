@@ -125,8 +125,7 @@ def main():
     out = os.path.join(os.path.dirname(CSV_PATH), "phase8_alloy_mapping.csv")
     map_df.to_csv(out, index=False)
     print(f"\nMapping saved to: {out}")
-    print("Review the table above. If the YS/UTS values look right for each")
-    print("alloy, we can proceed to build the training pipeline.")
+   
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 CSV_PATH    = r"C:\Users\vishw\ml tut\Project\data\cr9 data\tensile-properties-from-jeffs-ml-sheet-20220208.csv"
 MAPPING_CSV = r"C:\Users\vishw\ml tut\Project\data\cr9 data\phase8_alloy_mapping.csv"
 OUTPUT_DIR  = r"C:\Users\vishw\ml tut\Project\outputs"
- def extract_features(img):
+def extract_features(img):
     if img.dtype != np.uint8:
         img = (255 * (img - img.min()) / (img.ptp() + 1e-8)).astype(np.uint8)
     img_f  = img.astype(np.float64) / 255.0
