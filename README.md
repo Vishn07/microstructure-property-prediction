@@ -162,6 +162,49 @@ Composition plus temperature predicted real 9Cr steel strength at R² 0.80. **Ad
 
 Crucially, this result has three competing explanations that the experiment cannot separate: (1) genuine redundancy, (2) too few alloys (29) to learn the high-dimensional image mapping, or (3) optical resolution too coarse to capture the relevant features. Distinguishing them would require more alloys, higher-resolution imaging, or a set of alloys with identical composition but different heat treatments. An attempt to find such a controlled set within the CPJ-7 variants showed they vary composition by design and mostly lack images, so the clean experiment was not possible with this data.
 
+### Phase 10: Quantifying the Synthetic-to-Real Domain Gap
+
+The project showed R² 0.94 on synthetic data but R² 0.47 on real steel. How much of that gap is caused by **imaging artifacts alone**, as opposed to different materials, different targets, and fewer samples?
+
+This phase isolates the imaging variable. Synthetic MICRO2D images were degraded with the same physically motivated artifacts validated in Phase 7b — plus two steps specific to synthetic data: binary pixels converted to realistic grayscale phase intensities with internal variation, and phase boundaries softened, since real etched interfaces are never single-pixel sharp.
+
+![Phase 10 domain gap](https://raw.githubusercontent.com/Vishn07/microstructure-property-prediction/main/outputs/phase10_domain_gap.png)
+
+**The 2×2 domain adaptation matrix** (10,000 GRF images, identical splits across all four cells):
+
+| | test clean | test degraded |
+|---|---|---|
+| **train clean** | 0.912 | **−10.99** |
+| **train degraded** | 0.431 | **0.895** |
+
+Two results, pointing in opposite directions.
+
+**A clean-trained model fails completely on realistic images.** R² of −11 means it performs far worse than predicting the mean. The scatter plot shows every prediction collapsing to roughly 3,700 regardless of whether the true modulus was 1,000 or 4,800. The model is not degraded — it is inert.
+
+**But the information survives almost entirely.** Training on degraded images and testing on degraded images recovers R² 0.895 against a clean baseline of 0.912. **Irrecoverable information loss is only 0.017 R².** Etching variation, illumination gradients, defocus, and sensor noise do not destroy the microstructural signal. The catastrophic failure is purely a train/test distribution mismatch.
+
+#### Which features survive imaging?
+
+| Feature | Clean-vs-degraded correlation | |
+|---|---|---|
+| edge_density | 0.996 | stable |
+| run_len_var | 0.992 | stable |
+| phase_fraction | 0.990 | stable |
+| correlation_d8 | 0.980 | stable |
+| run_len_mean | 0.966 | stable |
+| contrast_d8 | 0.902 | stable |
+| ... | | |
+| fft_ratio | 0.637 | degraded |
+| energy_d1 | 0.594 | degraded |
+| homogeneity_d1 | 0.389 | **destroyed** |
+
+This connects directly back to Phase 4, where `glcm_energy_d1` alone carried **62% of the model's predictive weight**. The single feature the model relied on most heavily is among those imaging artifacts scramble worst, because GLCM energy depends on exact pixel-pair frequencies that noise and grayscale phase rendering destroy.
+
+The stable features are all **geometric** — phase fraction, edge density, run lengths. They survive because Otsu thresholding recovers the underlying phase map cleanly regardless of illumination, contrast, or noise.
+
+#### Practical recommendation
+
+A model intended for real micrographs should be **trained on degraded synthetic data**, not clean synthetic data, and should **down-weight distance-1 GLCM features in favor of geometric ones**. Both recommendations fall directly out of this experiment rather than from general intuition.
 ---
 
 ## Key Findings
