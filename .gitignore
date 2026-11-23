@@ -33,3 +33,35 @@ venv/
 # OS junk
 .DS_Store
 Thumbs.db
+# Not mine to publish without permission
+scripts/GenerativeAI/
+
+# Copyrighted / licensed source images and datasets (private use only)
+scripts/annotation_kit/
+
+# Spreadsheets and PDFs (papers, metadata)
+*.xlsx
+*.pdf
+
+# Generated data files
+scripts/score_results.csv
+master_real_image_labels.csv
+scripts/*.csv
+
+# Generated output folders
+scripts/particle_results/
+scripts/batch_real_image_results/
+scripts/batch_real_image_results_inverted/
+scripts/batch_real_image_results_v2/
+outputs/batch_real_image_results/
+
+# Model files
+*.pt
+*.pth
+*.h5
+*.npy
+*.pkl
+
+# Python cache
+__pycache__/
+*.pyc
