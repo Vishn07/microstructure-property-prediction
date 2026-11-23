@@ -4,6 +4,15 @@ A machine learning pipeline that predicts mechanical properties directly from mi
 
 The headline finding across every phase is consistent and somewhat against the grain of the deep-learning hype: **domain-informed hand-crafted features matched or beat convolutional neural networks for this task, especially when data was limited.**
 
+## Status
+
+This repository holds work at two stages of maturity.
+
+- Complete and reproducible. The synthetic MICRO2D analyses and the Phase 1 to 10 ablations, including the finding that hand crafted features match or beat CNNs, and the controlled result that composition outpredicts microstructure images for 9Cr steel strength.
+- Modest or negative on real data. Property prediction from real 9Cr micrographs reached only R squared 0.47, and a controlled ablation found that microstructure images add no measurable value beyond composition. These are reported as a baseline and a negative result, not as a working predictor.
+- In progress, not yet working. Classification and carbide particle characterization of real UHCS micrographs. The numbers below are preliminary and should not be read as finished results.
+- Planned. Replacing the brightness threshold particle detector with a pixel classifier trained on hand annotations and validated leave one crop out.
+
 ---
 
 ## Table of Contents
@@ -205,7 +214,19 @@ The stable features are all **geometric** — phase fraction, edge density, run 
 #### Practical recommendation
 
 A model intended for real micrographs should be **trained on degraded synthetic data**, not clean synthetic data, and should **down-weight distance-1 GLCM features in favor of geometric ones**. Both recommendations fall directly out of this experiment rather than from general intuition.
+
 ---
+## Real-Image Characterization (In Progress)
+
+This strand applies microstructure classifiers and a carbide particle detector to real micrographs. It is early work and nothing here should be read as a finished result. The classifiers were trained on a synthetic dataset grounded in weld metallurgy and related sources. That training work is still in development and is described only at a high level here.
+
+**Data.** Real images are the UHCS micrograph database, 598 SEM images of ultrahigh carbon steel at roughly 2 wt percent carbon. The images are not included in this repository. See Datasets for how to obtain them. Scale comes from the scale bars reported in the dataset paper, with micrometres per pixel equal to 190.4 divided by magnification.
+
+**Classification.** The pearlite classifier runs only on the 48 images labeled pearlite, because the lamellar versus spheroidized distinction only makes sense on dense carbide texture. The weld classifier does not suit UHCS and is not used on it. The pearlite versus spheroidite outcome is not treated as solid, because magnification differences confound it.
+
+**Particle detection and validation.** Carbide particles were hand painted on six crops at 982X, 1964X, and 4910X to serve as ground truth. The current detector is a simple brightness threshold scored against those annotations. Across the six crops it reaches a mean pixel IoU of 0.18, precision of 0.80, and recall of 0.20, recovering about 29 percent of the painted carbide area on average. What it marks is usually real carbide, but it misses most of the larger gray particles. Because the detector is known to undercount carbide, no area fractions or trends against annealing temperature are reported from it.
+
+**Next step.** The brightness threshold is being replaced by a pixel classifier trained on the hand annotations and validated leave one crop out.
 
 ## Key Findings
 
