@@ -4,6 +4,8 @@ A machine learning pipeline that predicts mechanical properties directly from mi
 
 The headline finding across every phase is consistent and somewhat against the grain of the deep-learning hype: **domain-informed hand-crafted features matched or beat convolutional neural networks for this task, especially when data was limited.**
 
+A second strand, still in progress, extends the same tooling to real UHCS micrographs, classifying microstructures and characterizing carbide particles. See Real-Image Characterization below for its current status and limits.
+
 ## Status
 
 This repository holds work at two stages of maturity.
@@ -12,6 +14,7 @@ This repository holds work at two stages of maturity.
 - Modest or negative on real data. Property prediction from real 9Cr micrographs reached only R squared 0.47, and a controlled ablation found that microstructure images add no measurable value beyond composition. These are reported as a baseline and a negative result, not as a working predictor.
 - In progress, not yet working. Classification and carbide particle characterization of real UHCS micrographs. The numbers below are preliminary and should not be read as finished results.
 - Planned. Replacing the brightness threshold particle detector with a pixel classifier trained on hand annotations and validated leave one crop out.
+
 
 ---
 
