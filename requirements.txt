@@ -1,11 +1,13 @@
 numpy
 pandas
+openpyxl
+matplotlib
+scipy
 scikit-learn
 scikit-image
 opencv-python
-matplotlib
+Pillow
 h5py
 torch
 torchvision
 tqdm
-kagglehub

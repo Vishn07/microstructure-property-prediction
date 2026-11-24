@@ -266,17 +266,40 @@ data/         (not tracked — large datasets downloaded separately)
 pip install -r requirements.txt
 ```
 
-Key scripts in order of the project arc:
-- `extract-features.py` — extract hand-crafted features from images
-- `train_model.py` — train and evaluate the Random Forest
-- `CNN.py`, `CNN_2.py`, `CNN v3.py` — CNN and hybrid variants
-- `ablation.py` — Phase 6 image-vs-features ablation
-- `Classify.py` — Phase 7 real-steel classification
-- `phase7b_realistic_aug.py` — materials-realistic augmentation A/B comparison
-- `phase7c_multiseed.py` — multi-seed verification of the augmentation result
-- `phase8_train.py`, `phase8b_train.py` — real 9Cr steel YS/UTS regression
-- `phase9_ablation.py` — image vs composition ablation
-- `predict.py` — load a saved model and predict on a new image
+Datasets are not included. See Datasets above for how to obtain MICRO2D, UHCS, and the 9Cr steel data, then place them under `data/`.
+
+**Property-prediction pipeline, in project order**
+
+| Script | What it does |
+|---|---|
+| `extract_features.py` | Extracts the hand crafted features from microstructure images |
+| `train_model.py` | Trains and evaluates the Random Forest |
+| `CNN.py`, `CNN_2.py`, `train_cnn.py` | CNN and hybrid model variants |
+| `ablation.py` | Phase 6 image versus features ablation |
+| `Classify.py` | Phase 7 real steel classification |
+| `phase7c_multiseed.py` | Phase 7c multi seed verification of the augmentation result |
+| `phase8_train.py` | Phase 8a room temperature YS and UTS regression |
+| `phase8_temp_train.py` | Phase 8b regression with test temperature added |
+| `phase9_ablation.py` | Phase 9 image versus composition ablation |
+| `phase10_synthetic_degradation.py` | Phase 10 synthetic to real domain gap |
+| `predict.py` | Loads a saved model and predicts on a new image |
+
+**Real-image characterization workflow**
+
+| Script | What it does |
+|---|---|
+| `make_annotation_crops.py` | Makes crops for hand annotation |
+| `collect_annotations.py` | Gathers the painted crops and names them for scoring |
+| `score_particle_detector.py` | Scores the detector against the hand annotations |
+| `spheroidite_particle_analysis.py` | Measures carbide particles in SEM images |
+
+**Requires code not included in this repository**
+
+| Script | What it does |
+|---|---|
+| `batch_classify_real_images.py` | Runs the microstructure classifiers over a folder of real micrographs. It depends on classifier scripts from Prof. Babu's lab that are not included here, so it does not run standalone |
+
+Supporting utilities: `data_ext.py`, `randimg.py`, `extract-features2.py`, `Class_analysis.py`, `phase8_sort.py`.
 
 ---
 
